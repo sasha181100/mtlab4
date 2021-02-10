@@ -1,0 +1,75 @@
+int positive_test(string &s, int num) {
+    try {
+        parser t(s);
+        t.E();
+        cout << "!!CORRECT!! Test " << num << "  |  " << s << "  |  " << "ALLOW" << endl;
+        return 1;
+    } catch (...) {
+        cout << "##ERROR## Test " << num << "  |  " << s << "  |  " << " REJECTED  "  << endl;
+        return 0;
+    }
+}
+
+int negative_test(string &s, int num) {
+    try {
+        parser t(s);
+        t.E();
+        cout << "##ERROR## Test " << num << "  |  " << s << "  |  " << "ALLOW" << endl;
+        return 0;
+    } catch (...) {
+        cout << "!!CORRECT!! Test " << num << "  |  " << s << "  |  " << " REJECTED  "  << endl;
+        return 1;
+    }
+}
+
+int main() {
+
+    string positves[5] = {
+            "var a: String;         ",
+            "val    b: Int = 10000000; ",
+            "var ajlashdfhjerfj: string",
+            "var       sladkjfl  \n : Int = 0",
+            "var a: Int;"
+    };
+    string negatives[11] = {
+            "var a String",
+            "var 1c: Float;",
+            "val c   : Int = --3;",
+            "var joke",
+            "var a: = 133;",
+            "val  b: Int =;",
+            "var york:: Int = 228;",
+            "var c: Int 5688;",
+            "val d: ;",
+            "b: Int = 3"
+            "var a: Double = 3;"
+
+    };
+    cout << "Positives" << endl << endl;
+    int cntpos = 0;
+    int cntneg = 0;
+    for (int i = 0; i < 5; i++) {
+        if (positive_test(positves[i], i + 1)) {
+            cntpos++;
+        } else {
+            cntneg++;
+        }
+    }
+    cout << endl << "Negatives" << endl << endl;
+    for (int i = 0; i < 11; i++) {
+        if (negative_test(negatives[i], i + 1)) {
+            cntpos++;
+        } else {
+            cntneg++;
+        }
+
+    }
+
+    cout << "Tests passed: " << cntpos << endl << "Tests failed: " << cntneg << endl;
+    if (cntneg == 0) {
+        cout << "Verdict: OK" << endl;
+    } else {
+        cout << "Verdict: WA" << endl;
+    }
+
+}

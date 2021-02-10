@@ -1,0 +1,15 @@
+E -> keyword name colon End
+End -> int Init
+Init -> eq number Ends
+Init -> Ends
+End -> name Ends
+Ends -> eps
+Ends -> semicolon
+
+int -> "Int"
+name -> "[a-zA-Z]+"
+keyword -> "^var|^val"
+colon -> ":"
+eq -> "="
+number -> "[0-9]+"
+semicolon -> ";"

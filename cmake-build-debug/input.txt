@@ -1,0 +1,24 @@
+E ret [double] -> T Es [T1ans] {$ans = Es2ans;}
+Es get [double acc] ret [double] -> plus T Es [acc + T2ans] {$ans = Es3ans;}
+Es get [double acc] ret [double] -> minus T Es [acc - T2ans] {$ans = Es3ans;}
+Es get [double acc] ret [double] -> eps {$ans = acc;}
+T ret [double] -> Pow Ts [Pow1ans] {$ans = Ts2ans;}
+Ts get [double acc] ret [double] -> mul Pow Ts [acc * Pow2ans] {$ans = Ts3ans;}
+Ts get [double acc] ret [double] -> div Pow Ts [acc / Pow2ans] {$ans = Ts3ans;}
+Ts get [double acc] ret [double] -> eps {$ans = acc; }
+Pow ret [double] -> F Pows {$ans = std::pow(F1ans, Pows2ans);}
+Pows ret [double] -> pow F Pows  {$ans = std::pow(F2ans, Pows3ans);}
+Pows ret [double] -> eps {$ans = 1; }
+
+F ret [double] -> number {$ans = std::stoi(number1ans);}
+F ret [double] -> minus F {$ans = -F2ans;}
+F ret [double] -> lb E rb {$ans = E2ans;}
+
+number -> "[0-9]+"
+plus -> "[+]"
+mul -> "[*]"
+lb -> "[(]"
+rb -> "[)]"
+div -> "/"
+minus -> "-"
+pow -> "[*][*]"
